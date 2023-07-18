@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.api</groupId>
-	<artifactId>travel</artifactId>
+	<artifactId>hikes</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>travel</name>
-	<description>Travel API</description>
+	<name>hikes</name>
+	<description>Hike API</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
