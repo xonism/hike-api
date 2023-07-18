@@ -25,7 +25,7 @@ public class ItemServiceTests {
 
     @ParameterizedTest
     @ValueSource(strings = {"winter", "spring", "summer", "autumn"})
-    void shouldGetListOfSeasonItemNames(String season) {
+    void givenValidSeason_WhenGetListOfSeasonItemNames_ThenListOfSeasonItemNamesIsReturned(String season) {
         List<Item> mockedItems = List.of(
                 Item.builder().id(1).name("Item 1").season(season).build(),
                 Item.builder().id(2).name("Item 2").season(season).build(),
