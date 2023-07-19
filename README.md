@@ -1,11 +1,158 @@
 # Hike API
 
-### 📥 Information that will be received:
-- Kilometers
-- Season
+## Overview
 
-### 📤 Information to be returned:
-- Sleepover count (based on kilometers)
-- Food calories (based on kilometers & season, multipliers)
-- Water amount in liters (based on kilometers & season, multipliers)
-- Items (general & based on season, for example, cap/spf from sun in Summer, umbrella/raincoat in Autumn)
+### 📥 Information that will be received:
+- Kilometers (`long lengthInKilometers`)
+- Season (`String season`)
+
+### 📤 Information that will be returned:
+- Sleepover count (`int sleepoverCount`)
+  - Based on kilometers
+  - In the `Constants` file, you can modify after how many kilometers you should sleep (with the `KILOMETERS_BEFORE_SLEEP` property)
+- Food calories (`int foodCalories`)
+  - Based on base daily calories, kilometers & season, which applies multipliers
+  - In the `Constants` file, you can modify base daily calories (with the `BASE_DAILY_CALORIES` property) & amount of calories burned per kilometer (with the `CALORIES_BURNED_PER_KILOMETER` property)
+- Liters of water (`double litersOfWater`)
+  - Based on kilometers & season, which applies multipliers
+  - In the `Constants` file, you can modify for how many kilometers 1 litre of water should be sufficient (with the `KILOMETERS_PER_WATER_LITRE` property)
+- Items (`List<String> items`)
+  - Based on season
+
+## Hikes endpoints
+
+### POST `http://localhost:8080/api/v1/hikes`
+🎯 **Purpose:** get hike recommendations.
+
+Success request body example:
+```json
+{
+    "lengthInKilometers": 200,
+    "season": "winter"
+}
+```
+Success response status code: `200`
+
+Success response body example:
+```json
+{
+  "sleepoverCount": 4,
+  "foodCalories": 23000,
+  "litersOfWater": 20.0,
+  "items": [
+    "scarf",
+    "gloves",
+    "earmuffs"
+  ]
+}
+```
+\
+Exception request body example:
+```json
+{
+    "lengthInKilometers": 200,
+    "season": "abc"
+}
+```
+
+Exception response status code: `400`
+
+Exception response body example:
+```json
+{
+  "message": "Invalid season 'abc' provided"
+}
+```
+
+## Items endpoints
+
+### GET `http://localhost:8080/api/v1/items/{id}`
+
+🎯 **Purpose:** get item.
+
+Success response status code: `200`
+
+Success response body example:
+```json
+{
+    "id": 13,
+    "name": "sunglasses",
+    "season": "summer"
+}
+```
+\
+Exception response status code: `400`
+
+Exception response body example:
+```json
+{
+  "message": "Item with provided ID not found"
+}
+```
+
+### GET `http://localhost:8080/api/v1/items`
+
+🎯 **Purpose:** get all items.
+
+Success response status code: `200`
+
+Success response body example:
+```json
+[
+  {
+    "id": 1,
+    "name": "cap",
+    "season": "summer"
+  },
+  {
+    "id": 2,
+    "name": "insect repellent",
+    "season": "summer"
+  }
+]
+```
+
+### POST `http://localhost:8080/api/v1/items`
+
+🎯 **Purpose:** create item.
+
+Request body example:
+```json
+{
+  "name": "Sunglasses",
+  "season": "Summer"
+}
+```
+Success response status code: `201`
+
+Success response body example:
+```json
+{
+    "id": 13,
+    "name": "sunglasses",
+    "season": "summer"
+}
+```
+\
+Exception request body example:
+```json
+{
+  "name": "Sunglasses",
+  "season": "abc"
+}
+```
+
+Exception response status code: `400`
+
+Exception response body example:
+```json
+{
+  "message": "Invalid season 'abc' provided"
+}
+```
+---
+### DELETE `http://localhost:8080/api/v1/items/{id}`
+
+🎯 **Purpose:** delete item.
+
+Success response status code: `204`
