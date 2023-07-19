@@ -11,7 +11,7 @@ public class SeasonUtils {
 
     public static Season getSeasonOrThrow(String season) {
         try {
-            return Season.valueOf(season.toUpperCase());
+            return Season.valueOf(season.trim().toUpperCase());
         } catch (IllegalArgumentException exception) {
             throw new InvalidSeasonException(season);
         }
