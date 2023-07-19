@@ -19,7 +19,7 @@ public class HikesService {
     }
 
     public HikeRecommendations getHikeRecommendations(HikeRequest hikeRequest) {
-        Season season = SeasonUtils.getSeasonIfValid(hikeRequest.season());
+        Season season = SeasonUtils.getSeasonOrThrow(hikeRequest.season());
 
         int sleepoverCount = getSleepoverCount(hikeRequest.lengthInKilometers());
         int foodCalories = getFoodCalories(sleepoverCount, hikeRequest.lengthInKilometers(), season);
