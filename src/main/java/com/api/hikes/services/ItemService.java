@@ -1,12 +1,11 @@
 package com.api.hikes.services;
 
+import com.api.hikes.enums.Season;
 import com.api.hikes.exceptions.NotFoundByIdException;
 import com.api.hikes.models.Item;
-import com.api.hikes.enums.Season;
 import com.api.hikes.records.ItemRequest;
 import com.api.hikes.repositories.ItemRepository;
 import com.api.hikes.utils.SeasonUtils;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +29,7 @@ public class ItemService {
     }
 
     public List<Item> getAll() {
-        return itemRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        return itemRepository.findAllByOrderByIdAsc();
     }
 
     public Item create(ItemRequest itemRequest) {

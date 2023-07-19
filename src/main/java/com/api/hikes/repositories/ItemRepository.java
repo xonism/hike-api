@@ -10,4 +10,6 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findBySeason(String season);
+
+    List<Item> findAllByOrderByIdAsc();
 }
