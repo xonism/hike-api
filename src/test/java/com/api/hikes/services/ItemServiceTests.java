@@ -1,6 +1,6 @@
 package com.api.hikes.services;
 
-import com.api.hikes.entities.Item;
+import com.api.hikes.models.Item;
 import com.api.hikes.exceptions.InvalidSeasonException;
 import com.api.hikes.records.ItemRequest;
 import com.api.hikes.repositories.ItemRepository;

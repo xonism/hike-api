@@ -1,4 +1,4 @@
-package com.api.hikes.entities;
+package com.api.hikes.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

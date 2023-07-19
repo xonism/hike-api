@@ -1,6 +1,6 @@
 package com.api.hikes.repositories;
 
-import com.api.hikes.entities.Item;
+import com.api.hikes.models.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
