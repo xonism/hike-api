@@ -38,7 +38,7 @@ public class HikesService {
     }
 
     private int getFoodCalories(int sleepoverCount, long lengthInKilometers, Season season) {
-        int baseDailyCalories = sleepoverCount * Constants.BASE_DAILY_REQUIRED_CALORIES;
+        int baseDailyCalories = sleepoverCount * Constants.BASE_DAILY_CALORIES;
         int hikeCalories =
                 (int) (lengthInKilometers * Constants.CALORIES_BURNED_PER_KILOMETER * season.getFoodMultiplier());
         return baseDailyCalories + hikeCalories;
