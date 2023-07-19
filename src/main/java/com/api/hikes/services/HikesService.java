@@ -2,9 +2,9 @@ package com.api.hikes.services;
 
 import com.api.hikes.constants.Constants;
 import com.api.hikes.enums.Season;
-import com.api.hikes.exceptions.InvalidSeasonException;
 import com.api.hikes.records.HikeRecommendations;
 import com.api.hikes.records.HikeRequest;
+import com.api.hikes.utils.SeasonUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,13 +19,7 @@ public class HikesService {
     }
 
     public HikeRecommendations getHikeRecommendations(HikeRequest hikeRequest) {
-        Season season;
-
-        try {
-            season = Season.valueOf(hikeRequest.season().toUpperCase());
-        } catch (IllegalArgumentException exception) {
-            throw new InvalidSeasonException(hikeRequest.season());
-        }
+        Season season = SeasonUtils.getSeasonIfValid(hikeRequest.season());
 
         int sleepoverCount = getSleepoverCount(hikeRequest.lengthInKilometers());
         int foodCalories = getFoodCalories(sleepoverCount, hikeRequest.lengthInKilometers(), season);
