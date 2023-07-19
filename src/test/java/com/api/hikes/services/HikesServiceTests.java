@@ -30,7 +30,8 @@ class HikesServiceTests {
 
         List<String> items = List.of("Item 1", "Item 2", "Item 3");
 
-        when(itemService.getListOfSeasonItemNames(hikeRequest.season())).thenReturn(items);
+        when(itemService.getListOfSeasonItemNames(hikeRequest.season()))
+                .thenReturn(items);
 
         HikeRecommendations actualResult = underTest.getHikeRecommendations(hikeRequest);
         HikeRecommendations expectedResult = HikeRecommendations.builder()
