@@ -5,7 +5,11 @@ import com.api.hikes.exceptions.InvalidSeasonException;
 
 public class SeasonUtils {
 
-    public static Season getSeasonIfValid(String season) {
+    private SeasonUtils() {
+
+    }
+
+    public static Season getSeasonOrThrow(String season) {
         try {
             return Season.valueOf(season.toUpperCase());
         } catch (IllegalArgumentException exception) {
