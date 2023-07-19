@@ -40,7 +40,7 @@ class HikesServiceTests {
                 .items(items)
                 .build();
 
-        assertThat(actualResult).isNotNull().isEqualTo(expectedResult);
+        assertThat(actualResult).isNotNull().usingRecursiveComparison().isEqualTo(expectedResult);
 
         verify(itemService).getListOfSeasonItemNames(hikeRequest.season());
         verifyNoMoreInteractions(itemService);
@@ -57,5 +57,7 @@ class HikesServiceTests {
         String expectedMessage = new InvalidSeasonException(hikeRequest.season()).getMessage();
 
         assertThat(actualMessage).isNotNull().isEqualTo(expectedMessage);
+
+        verifyNoInteractions(itemService);
     }
 }
