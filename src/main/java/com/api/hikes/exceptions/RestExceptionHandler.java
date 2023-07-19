@@ -17,4 +17,13 @@ public class RestExceptionHandler {
                 new Error(exception.getMessage()),
                 HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value = {NotFoundByIdException.class})
+    public ResponseEntity<Error> handleNotFoundByIdException(
+            NotFoundByIdException exception
+    ) {
+        return new ResponseEntity<>(
+                new Error(exception.getMessage()),
+                HttpStatus.NOT_FOUND);
+    }
 }
