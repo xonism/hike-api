@@ -1,6 +1,12 @@
 # Hike API
 
-## Overview
+Application meant for getting hike recommendations.
+
+Built with Java 17, Spring Boot & H2.
+
+Initial data is loaded from `src/main/resources/data.sql`.
+
+## Hike recommendation overview
 
 ### 📥 Information that will be provided:
 - Kilometers (`long lengthInKilometers`)
